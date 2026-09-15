@@ -23,7 +23,7 @@ static func save_data_to_file(save_data : SaveData) -> void:
 static func get_save_data() -> SaveData:
 	# checking if save data exists
 	if not FileAccess.file_exists(SAVE_FILE_NAME):
-		return null
+		return SaveData.new()
 	
 	# Open file
 	var file : FileAccess = FileAccess.open(SAVE_FILE_NAME, FileAccess.READ)
@@ -40,12 +40,12 @@ static func get_save_data() -> SaveData:
 	
 	if error != Error.OK:
 		push_warning("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-		return null
+		return SaveData.new()
 	
 	# checking that our data is our chosen type
 	if json.data is not Dictionary:
 		printerr("%s: JSON data received is not of type Dictionary") 
-		return null
+		return SaveData.new()
 	
 	# pass data to SaveData
 	return SaveData.from_dict(json.data as Dictionary)
