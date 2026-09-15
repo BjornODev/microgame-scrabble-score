@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbwxhfl8st730"]
+
+[ext_resource type="Script" uid="uid://b8roapek7ns4j" path="res://ScrabbleScore/main.tscn.gd" id="1_5e7e6"]
+[ext_resource type="Script" uid="uid://dsigj0hlfn54c" path="res://ScrabbleScore/input_manager.gd" id="2_we4gs"]
+[ext_resource type="Script" uid="uid://ks6vxnmo2c80" path="res://ScrabbleScore/tile_manager.gd" id="3_tgw6b"]
+
+[node name="Main" type="Node2D" unique_id=384787734]
+script = ExtResource("1_5e7e6")
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1627394303]
+script = ExtResource("2_we4gs")
+
+[node name="TileManager" type="Node2D" parent="." unique_id=429719367]
+position = Vector2(575.5, 609)
+script = ExtResource("3_tgw6b")
