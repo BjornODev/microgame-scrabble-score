@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://cbwxhfl8st730"]
+
+[ext_resource type="Script" uid="uid://b8roapek7ns4j" path="res://ScrabbleScore/main.gd" id="1_4nb4a"]
+[ext_resource type="Script" uid="uid://cv1tqomq6d35i" path="res://Framework/Addons/TweenTool/Scripts/Components/node2D_tween.gd" id="2_4nb4a"]
+[ext_resource type="Texture2D" uid="uid://cqvcfdt8hdfec" path="res://ScrabbleScore/Assets/Scrabble_Board.png" id="2_diphf"]
+[ext_resource type="Script" uid="uid://cct0slx0ktj60" path="res://Framework/Addons/TweenTool/Scripts/TweenResources/transform_tween.gd" id="3_diphf"]
+[ext_resource type="Script" uid="uid://dtxea7wlkf3vx" path="res://Framework/Addons/TweenTool/Scripts/Effect Sequencers/node2D_tween_sequencer.gd" id="4_br6f0"]
+[ext_resource type="Script" uid="uid://ctq0fnnu3yso3" path="res://ScrabbleScore/Scenes/timer_bar.gd" id="6_br6f0"]
+[ext_resource type="Shader" uid="uid://cci4qksjr18me" path="res://ScrabbleScore/Shaders/crt_shader.gdshader" id="7_jo4tu"]
+
+[sub_resource type="Resource" id="Resource_3p2av"]
+script = ExtResource("3_diphf")
+end_scale = Vector2(1.25, 1.25)
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="Resource" id="Resource_memtb"]
+script = ExtResource("3_diphf")
+end_rotation = 0.0
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="Resource" id="Resource_smu75"]
+script = ExtResource("3_diphf")
+end_scale = Vector2(1.35, 0.65)
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="Resource" id="Resource_hag5w"]
+script = ExtResource("3_diphf")
+end_scale = Vector2(1, 1)
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="Resource" id="Resource_c1gip"]
+script = ExtResource("3_diphf")
+end_rotation = 15.0
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="Resource" id="Resource_jkrt8"]
+script = ExtResource("3_diphf")
+end_rotation = 0.0
+metadata/_custom_type_script = "uid://cct0slx0ktj60"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br6f0"]
+shader = ExtResource("7_jo4tu")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 648)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.16800000798
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.03200000152
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Main" type="Node2D" unique_id=384787734]
+script = ExtResource("1_4nb4a")
+seconds_per_tile_easy = 1.75
+seconds_per_tile_hard = 0.8
+reaction_bonus = 0.7
+
+[node name="World" type="Node2D" parent="." unique_id=37968309]
+
+[node name="BoardArt" type="Sprite2D" parent="World" unique_id=636960091]
+texture = ExtResource("2_diphf")
+
+[node name="Board" type="Node2D" parent="World" unique_id=84015657]
+
+[node name="Targets" type="Node2D" parent="World" unique_id=346455044]
+
+[node name="Hand" type="Node2D" parent="World" unique_id=236404013]
+
+[node name="Juice" type="Node" parent="." unique_id=1169887540]
+
+[node name="PickUp" type="Node" parent="Juice" unique_id=53398954 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../World/Hand")
+transform_tween = SubResource("Resource_3p2av")
+trans_type = 10
+ease_type = 1
+tween_duration = 0.1
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="Snap" type="Node" parent="Juice" unique_id=237278063 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../World/Hand")
+transform_tween = SubResource("Resource_memtb")
+trans_type = 4
+ease_type = 1
+tween_duration = 0.09
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="Squash" type="Node" parent="Juice" unique_id=1619900590 node_paths=PackedStringArray("affected_node", "tween_array")]
+script = ExtResource("4_br6f0")
+affected_node = NodePath("../../World/Hand")
+tween_array = [NodePath("SquashIn"), NodePath("SquashOut")]
+metadata/_custom_type_script = "uid://dtxea7wlkf3vx"
+
+[node name="SquashIn" type="Node" parent="Juice/Squash" unique_id=101321936 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../../World/Hand")
+transform_tween = SubResource("Resource_smu75")
+tween_duration = 0.05
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="SquashOut" type="Node" parent="Juice/Squash" unique_id=252568135 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../../World/Hand")
+transform_tween = SubResource("Resource_hag5w")
+trans_type = 10
+ease_type = 1
+tween_duration = 0.2
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="Nudge" type="Node" parent="Juice" unique_id=178393741 node_paths=PackedStringArray("affected_node", "tween_array")]
+script = ExtResource("4_br6f0")
+affected_node = NodePath("../../World/Hand")
+tween_array = [NodePath("NudgeOut"), NodePath("NudgeBack")]
+metadata/_custom_type_script = "uid://dtxea7wlkf3vx"
+
+[node name="NudgeOut" type="Node" parent="Juice/Nudge" unique_id=676206096 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../../World/Hand")
+transform_tween = SubResource("Resource_c1gip")
+tween_duration = 0.05
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="NudgeBack" type="Node" parent="Juice/Nudge" unique_id=2099098753 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_4nb4a")
+affected_node = NodePath("../../../World/Hand")
+transform_tween = SubResource("Resource_jkrt8")
+trans_type = 10
+ease_type = 1
+tween_duration = 0.1
+metadata/_custom_type_script = "uid://cv1tqomq6d35i"
+
+[node name="TimerBar" type="Node2D" parent="." unique_id=1103889970]
+script = ExtResource("6_br6f0")
+
+[node name="Left" type="Line2D" parent="TimerBar" unique_id=213159130]
+
+[node name="Right" type="Line2D" parent="TimerBar" unique_id=2057144412]
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1709193238]
+
+[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=433784669]
+material = SubResource("ShaderMaterial_br6f0")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
