@@ -3,6 +3,7 @@ extends Area2D
 signal clicked(target)
 
 var marker_id = -1
+var cell = Vector2i.ZERO
 
 @onready var glow = $Glow
 @onready var glyph = $Glyph

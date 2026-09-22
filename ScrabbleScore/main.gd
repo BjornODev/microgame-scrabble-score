@@ -10,37 +10,14 @@ const BLANK_PATH = "res://ScrabbleScore/Assets/Blue/letter.png"
 const GRID = 15
 const BAG = "AEIORTLSNUDGBCMPFHVWY"
 
+# Measured from the generated 1260px board. Re-export the art and these break.
 const BOARD_TEXTURE_SIZE = 1260.0
 const PLAYFIELD_INSET = 60.0
 const SOURCE_CELL = 76.0
 
-# . plain   d double letter   t triple letter   D double word   T triple word
-const PREMIUM = [
-	"T......T......T",
-	".D.d..t.t..d.D.",
-	"..D..d...d..D..",
-	".d.D.......D.d.",
-	"....D..d..D....",
-	"..d..t...t..d..",
-	".t....d.d....t.",
-	"T...d..T..d...T",
-	".t....d.d....t.",
-	"..d..t...t..d..",
-	"....D..d..D....",
-	".d.D.......D.d.",
-	"..D..d...d..D..",
-	".D.d..t.t..d.D.",
-	"T......T......T",
-]
-
-const POINTS = {
-	"A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1,
-	"J": 8, "K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "Q": 10, "R": 1,
-	"S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10,
-}
-
-const COLORS = [Color("ff8c1a"), Color("a3ff3c"), Color("c46bff"), Color("ff4d4dff")]
-const GLYPHS = ["j", "f", "h", "q"]
+# Letter values and the premium grid live in ScoreRules, so there is one copy.
+const COLORS = [Color("ff8c1a"), Color("a3ff3c"), Color("c46bff"), Color("ffe14d")]
+const GLYPHS = ["f", "j", "h", "n"]
 
 @export var cell_size: float = 36.0
 @export var hand_size: int = 7
@@ -49,6 +26,10 @@ const GLYPHS = ["j", "f", "h", "q"]
 @export var seconds_per_tile_hard: float = 1.1
 @export var reaction_bonus: float = 0.8
 @export var wrong_click_penalty: float = 0.12
+
+@export var tile_crash: AudioStream
+@export var tile_click: AudioStream
+@export var wrong_place: AudioStream
 
 @onready var world: Node2D = $World
 @onready var board_art: Sprite2D = $World/BoardArt
@@ -62,6 +43,7 @@ const GLYPHS = ["j", "f", "h", "q"]
 @onready var nudge = $Juice/Nudge
 
 @onready var timer_bar = $TimerBar
+@onready var score_display = $ScoreDisplay
 
 var board_origin = Vector2.ZERO
 var board_rows = []
@@ -70,6 +52,8 @@ var live_count = 0
 var live_tiles = []
 var marker_order = []
 var all_tiles = []
+var tiles_by_cell = {}
+var placed = []
 var carried = null
 var started = false
 var finished = false
@@ -79,8 +63,8 @@ var score = 0
 
 
 func _ready():
-	# Difficulty decides how many tiles the play needs, then the board offers a
-	# pre-verified legal play of that size.
+	# Difficulty decides how many tiles the round needs, then the board offers a
+	# pre-verified legal round of that size.
 	var wanted = int(clamp(2 + round(difficulty * 2), 1, 4))
 	var board_data = BoardData.BOARDS[randi() % BoardData.BOARDS.size()]
 	board_rows = board_data["rows"]
@@ -139,7 +123,7 @@ func pick_play(plays, wanted):
 	if matches.size() > 0:
 		return matches[randi() % matches.size()]
 
-	# No play of that size on this board, take the closest one.
+	# No round of that size on this board, take the closest one.
 	var best = plays[0]
 	for p in plays:
 		if abs(p["cells"].size() - wanted) < abs(best["cells"].size() - wanted):
@@ -163,8 +147,9 @@ func build_board():
 				continue
 			var tile = TILE_SCENE.instantiate()
 			board.add_child(tile)
-			tile.setup(letter_texture(letter), letter, POINTS[letter], cell_size)
+			tile.setup(letter_texture(letter), letter, ScoreRules.POINTS[letter], cell_size)
 			tile.position = cell_position(x, y)
+			tiles_by_cell[Vector2i(x, y)] = tile
 			all_tiles.append(tile)
 
 
@@ -189,12 +174,12 @@ func deal_hand():
 	for i in range(hand_size):
 		var tile = TILE_SCENE.instantiate()
 		hand.add_child(tile)
-		tile.setup(letter_texture(letters[i]), letters[i], POINTS[letters[i]], cell_size)
+		tile.setup(letter_texture(letters[i]), letters[i], ScoreRules.POINTS[letters[i]], cell_size)
 		tile.position = Vector2(start_x + i * spacing, hand_y)
 		dealt.append(tile)
 		all_tiles.append(tile)
 
-	# Marker i has to pair with play cell i, so this order matters.
+	# Marker i has to pair with cell i, so this order matters.
 	for i in range(live_count):
 		var m = marker_order[i]
 		var tile = dealt[live_slots[i]]
@@ -214,6 +199,7 @@ func make_targets():
 		targets.add_child(target)
 		target.setup(blank, m, COLORS[m], GLYPHS[m], cell_size)
 		target.position = cell_position(cell.x, cell.y)
+		target.cell = cell
 		target.clicked.connect(on_target_clicked)
 
 
@@ -236,11 +222,13 @@ func on_target_clicked(target):
 		timer_bar.flash()
 		nudge.affected_node = carried
 		nudge.do_tween_sequence()
+		score_display.play(wrong_place, 1.0, 0.85)
 		return
 
 	var tile = carried
 	carried = null
-	score += tile.points
+	placed.append({"cell": target.cell, "letter": tile.letter})
+	tiles_by_cell[target.cell] = tile
 	tile.z_index = 0
 	tile.stop_glowing()
 
@@ -250,30 +238,39 @@ func on_target_clicked(target):
 	# The destination changes every placement, so write it before playing.
 	snap_tween.affected_node = tile
 	snap_tween.transform_tween.end_position = landing
+	score_display.play(tile_click, randf_range(0.85, 1.15), randf_range(0.8, 0.9))
+	
+	next_tile()
+	
 	await snap_tween.do_tween()
 
 	squash.affected_node = tile.art
 	await squash.do_tween_sequence()
 
-	# The clock can run out mid animation.
 	if finished:
 		return
-
-	next_tile()
 
 
 func round_won():
 	if finished:
 		return
+	# Set before the first await, or the clock can fire round_lost() during the
+	# scoring animation and the framework hears both outcomes.
 	finished = true
-	print("score so far: ", score)
-	#GameManager.win()
+
+	score_display.setup(board_origin, cell_size, tiles_by_cell)
+	var plan = ScoreRules.build_plan(board_rows, placed)
+	score = await score_display.play_plan(plan)
+
+	GameManager.win()
 
 
 func round_lost():
 	if finished:
 		return
 	finished = true
+	
+	score_display.play(tile_crash, randf_range(0.85, 1.15), 10)
 	await explode_board()
 	await get_tree().create_timer(1.2).timeout
 	GameManager.lose()
