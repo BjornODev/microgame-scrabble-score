@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://rw1yhhdbcfrd" path="res://virus.exeGame/scenes/score.tscn" id="4_wwwno"]
 [ext_resource type="AudioStream" uid="uid://b0vw5ivlx5jlq" path="res://virus.exeGame/Assets/sfx/tetris_sfx.mp3" id="5_u8rpl"]
 [ext_resource type="Script" uid="uid://dyiy0oce14uyb" path="res://virus.exeGame/scripts/audio_stream_player.gd" id="6_irx6m"]
-[ext_resource type="PackedScene" uid="uid://by5cofprr0ipt" path="res://virus.exeGame/scenes/globals.tscn" id="9_quxyu"]
 
 [node name="Virus_exeGame" type="Node2D" unique_id=141195700]
 script = ExtResource("1_yn0u1")
@@ -34,8 +33,6 @@ z_index = 3
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
-
-[node name="Globals" parent="." unique_id=1285331439 instance=ExtResource("9_quxyu")]
 
 [connection signal="game_over" from="score" to="." method="_on_score_game_over"]
 [connection signal="game_over" from="score" to="spawn_terminal" method="_on_score_game_over"]

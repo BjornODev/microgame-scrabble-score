@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ci2fgwaikbags"]
+
+[ext_resource type="Theme" uid="uid://cb6b34wyrrvi8" path="res://Kevin/assets/themes/medieval.tres" id="1_ahw5q"]
+[ext_resource type="Script" uid="uid://ckqo72j7giopd" path="res://Kevin/objects/ui/why_you_lost.gd" id="2_5ktur"]
+
+[sub_resource type="Animation" id="Animation_5ktur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d2wl6"]
+resource_name = "come_in"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4s686"]
+resource_name = "come_in_and_leave"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s686"]
+_data = {
+&"RESET": SubResource("Animation_5ktur"),
+&"come_in": SubResource("Animation_d2wl6"),
+&"come_in_and_leave": SubResource("Animation_4s686")
+}
+
+[node name="Why You Lost" type="RichTextLabel" unique_id=2080884224]
+modulate = Color(1, 1, 1, 0)
+offset_left = 26.0
+offset_top = 298.0
+offset_right = 1113.0
+offset_bottom = 358.0
+mouse_filter = 2
+theme = ExtResource("1_ahw5q")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Shoot with thy mouse!"
+horizontal_alignment = 3
+script = ExtResource("2_5ktur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1731006073]
+libraries/ = SubResource("AnimationLibrary_4s686")

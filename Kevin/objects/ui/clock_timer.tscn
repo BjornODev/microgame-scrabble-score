@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://ev1462uplc7j"]
+
+[ext_resource type="Texture2D" uid="uid://bw1dqxennqkpl" path="res://Kevin/assets/ui/clock_naked.png" id="1_of2c2"]
+[ext_resource type="Script" uid="uid://1i587l2r0iju" path="res://Kevin/objects/ui/clock_timer.gd" id="2_0bruo"]
+[ext_resource type="Theme" uid="uid://cb6b34wyrrvi8" path="res://Kevin/assets/themes/medieval.tres" id="3_of2c2"]
+
+[sub_resource type="Animation" id="Animation_of2c2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0bruo"]
+resource_name = "low"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.3528494, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mqrd0"]
+resource_name = "not_low"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brtwx"]
+_data = {
+&"RESET": SubResource("Animation_of2c2"),
+&"low": SubResource("Animation_0bruo"),
+&"not_low": SubResource("Animation_mqrd0")
+}
+
+[node name="Clock Timer" type="Sprite2D" unique_id=648612755]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_of2c2")
+script = ExtResource("2_0bruo")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1979105025]
+modulate = Color(0, 0, 0, 0.78431374)
+z_index = -1
+position = Vector2(1, 1)
+texture = ExtResource("1_of2c2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1978909048]
+offset_left = 10.5
+offset_top = -6.5
+offset_right = 371.5
+offset_bottom = 52.5
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme = ExtResource("3_of2c2")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "15"
+
+[node name="Timer" type="Timer" parent="." unique_id=1912745274]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1441703796]
+libraries/ = SubResource("AnimationLibrary_brtwx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
