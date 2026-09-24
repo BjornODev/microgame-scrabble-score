@@ -255,16 +255,18 @@ vertical_alignment = 1
 
 [node name="Juice" type="Node" parent="ScoreDisplay" unique_id=419118868]
 
-[node name="Pop" type="Node" parent="ScoreDisplay/Juice" unique_id=648485341]
+[node name="Pop" type="Node" parent="ScoreDisplay/Juice" unique_id=648485341 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("14_653k3")
+affected_node = NodePath("../../TotalLabel")
 transform_tween = SubResource("Resource_mxp0k")
 trans_type = 10
 ease_type = 1
 tween_duration = 0.2
 metadata/_custom_type_script = "uid://c0eq70gyg7rhf"
 
-[node name="ScorePop" type="Node" parent="ScoreDisplay/Juice" unique_id=1469029154]
+[node name="ScorePop" type="Node" parent="ScoreDisplay/Juice" unique_id=1469029154 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("2_6xw7n")
+affected_node = NodePath("../../../World/Hand")
 transform_tween = SubResource("Resource_4x6bb")
 trans_type = 10
 ease_type = 1
@@ -276,14 +278,16 @@ script = ExtResource("15_1kice")
 affected_node = NodePath("../../TotalLabel")
 metadata/_custom_type_script = "uid://cbrntoax56ix8"
 
-[node name="FlashOn" type="Node" parent="ScoreDisplay/Juice/Flash" unique_id=960158066]
+[node name="FlashOn" type="Node" parent="ScoreDisplay/Juice/Flash" unique_id=960158066 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("14_653k3")
+affected_node = NodePath("../../../TotalLabel")
 canvas_item_tween = SubResource("Resource_4oerw")
 tween_duration = 0.06
 metadata/_custom_type_script = "uid://c0eq70gyg7rhf"
 
-[node name="FlashOff" type="Node" parent="ScoreDisplay/Juice/Flash" unique_id=1460497792]
+[node name="FlashOff" type="Node" parent="ScoreDisplay/Juice/Flash" unique_id=1460497792 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("14_653k3")
+affected_node = NodePath("../../../TotalLabel")
 canvas_item_tween = SubResource("Resource_nom8c")
 tween_duration = 0.14
 metadata/_custom_type_script = "uid://c0eq70gyg7rhf"
@@ -383,26 +387,30 @@ ease_type = 1
 tween_duration = 0.07
 metadata/_custom_type_script = "uid://cv1tqomq6d35i"
 
-[node name="TileReveal" type="Node" parent="ScoreDisplay/Juice" unique_id=1781887443]
+[node name="TileReveal" type="Node" parent="ScoreDisplay/Juice" unique_id=1781887443 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("4_eeyoy")
+affected_node = NodePath("../../../World/Hand")
 metadata/_custom_type_script = "uid://dtxea7wlkf3vx"
 
-[node name="Rise" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=756448005]
+[node name="Rise" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=756448005 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("2_6xw7n")
+affected_node = NodePath("../../../../World/Hand")
 transform_tween = SubResource("Resource_xwauj")
 trans_type = 10
 ease_type = 1
 tween_duration = 0.1
 metadata/_custom_type_script = "uid://cv1tqomq6d35i"
 
-[node name="Hang" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=1066027957]
+[node name="Hang" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=1066027957 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("2_6xw7n")
+affected_node = NodePath("../../../../World/Hand")
 transform_tween = SubResource("Resource_yobwb")
 tween_duration = 0.1
 metadata/_custom_type_script = "uid://cv1tqomq6d35i"
 
-[node name="Settle" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=1419915606]
+[node name="Settle" type="Node" parent="ScoreDisplay/Juice/TileReveal" unique_id=1419915606 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("2_6xw7n")
+affected_node = NodePath("../../../../World/Hand")
 transform_tween = SubResource("Resource_pj24a")
 trans_type = 10
 ease_type = 1
