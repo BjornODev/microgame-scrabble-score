@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://rpw68hnik200"]
+
+[ext_resource type="Texture2D" uid="uid://ddr6kwc74rql3" path="res://virus.exeGame/Assets/sprites/2026-09-16_16-05-50.png" id="1_lfntk"]
+
+[node name="Background_empty" type="TextureRect" unique_id=1162482812]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_lfntk")

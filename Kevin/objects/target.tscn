@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bvvg37fhy3c4s"]
+
+[ext_resource type="Script" uid="uid://cgm7e4ekkg8oa" path="res://Kevin/objects/target.gd" id="1_4qvjs"]
+[ext_resource type="PackedScene" uid="uid://c06moreye6kqy" path="res://Kevin/assets/models/target.tscn" id="2_b1xmg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bk7jt"]
+height = 0.1
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_b1xmg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("target:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, -4.3711385e-08, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_42yt5"]
+resource_name = "hit"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [20.0, 20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("target:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.712389, 0, 0), Vector3(-1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(4.712389, 0, 0), Vector3(4.712389, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aui0a"]
+resource_name = "secret"
+length = 0.00999999999999999
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.49803922, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aui0a"]
+_data = {
+&"RESET": SubResource("Animation_b1xmg"),
+&"hit": SubResource("Animation_42yt5"),
+&"secret": SubResource("Animation_aui0a")
+}
+
+[node name="Target" type="CharacterBody3D" unique_id=999767853]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_4qvjs")
+
+[node name="target" parent="." unique_id=25669012 instance=ExtResource("2_b1xmg")]
+transform = Transform3D(0.5, 2.1855692e-08, 9.553426e-16, 0, -2.1855694e-08, 0.5, 2.1855692e-08, -0.5, -2.1855694e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1171072238]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_bk7jt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1917052247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+light_color = Color(1, 1, 0, 1)
+light_energy = 5.0
+omni_range = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2010885915]
+libraries/ = SubResource("AnimationLibrary_aui0a")

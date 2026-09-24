@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="RaceTrackCharacterStats" format=3 uid="uid://co0qhmnx4s8o0"]
+
+[ext_resource type="Script" uid="uid://bbwtag0a7oe6y" path="res://racecar/resources/characters/racetrack_character.gd" id="1_mvk2e"]
+[ext_resource type="Texture2D" uid="uid://fspqn0l3cat3" path="res://racecar/assets/pngs/porky_the_pig (1).png" id="1_rsifl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxqy"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgrjv"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoj31"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nmg5"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkfbt"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfuew"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py17n"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ojn5"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c5fy"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syvgg"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vb81"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx8q0"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coowb"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chs3v"]
+atlas = ExtResource("1_rsifl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsifl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgrjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoj31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nmg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkfbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfuew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py17n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ojn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c5fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syvgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vb81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx8q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coowb")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chs3v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_mvk2e")
+character_sprite_frames = SubResource("SpriteFrames_rsifl")
+metadata/_custom_type_script = "uid://bbwtag0a7oe6y"

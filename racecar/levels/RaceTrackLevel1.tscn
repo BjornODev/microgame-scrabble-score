@@ -1,0 +1,219 @@
+[gd_scene format=3 uid="uid://cpv5mu1ce0uw5"]
+
+[ext_resource type="Script" uid="uid://o5ub56aveggr" path="res://racecar/levels/race_track_level.gd" id="1_hben6"]
+[ext_resource type="Resource" uid="uid://dcyob4nux784w" path="res://racecar/resources/levels/level_1/level1_stats.tres" id="2_hben6"]
+[ext_resource type="Texture2D" uid="uid://bdpmh8a5ry1ds" path="res://racecar/assets/pngs/racetrack_3.png" id="3_frvkm"]
+[ext_resource type="Script" uid="uid://c5npwbo7ponpe" path="res://racecar/levels/character_handler.gd" id="4_svdhh"]
+[ext_resource type="Script" uid="uid://bbwtag0a7oe6y" path="res://racecar/resources/characters/racetrack_character.gd" id="5_agtuq"]
+[ext_resource type="Resource" uid="uid://co0qhmnx4s8o0" path="res://racecar/resources/characters/pigster.tres" id="6_2rs7f"]
+[ext_resource type="Resource" uid="uid://bf0e2e4wxw4ga" path="res://racecar/resources/characters/mr_melon.tres" id="7_t2qrm"]
+[ext_resource type="Resource" uid="uid://craqru1ocuij6" path="res://racecar/resources/characters/innocent_tree.tres" id="8_6blc1"]
+[ext_resource type="PackedScene" uid="uid://bmmsn6uhteowi" path="res://racecar/characters/RaceTrackCharacter.tscn" id="9_y1dud"]
+[ext_resource type="PackedScene" uid="uid://caxpktqfd0bni" path="res://racecar/racecar.tscn" id="10_6mwew"]
+[ext_resource type="Texture2D" uid="uid://b30e4hbbeolrk" path="res://racecar/assets/pngs/explosion/funny_explosion-09.png" id="11_tqmhi"]
+[ext_resource type="Texture2D" uid="uid://dqi3det64y27x" path="res://racecar/assets/pngs/explosion/funny_explosion-10.png" id="12_wvhk8"]
+[ext_resource type="Texture2D" uid="uid://oui3oj4a6s2l" path="res://racecar/assets/pngs/explosion/funny_explosion-11.png" id="13_1uclj"]
+[ext_resource type="Texture2D" uid="uid://cycxjvmakjyu6" path="res://racecar/assets/pngs/explosion/funny_explosion-12.png" id="14_6eu3h"]
+[ext_resource type="Texture2D" uid="uid://dcitax7bob2ri" path="res://racecar/assets/pngs/explosion/funny_explosion-13.png" id="15_d2y2x"]
+[ext_resource type="Texture2D" uid="uid://cy86ooql1wcyw" path="res://racecar/assets/pngs/explosion/funny_explosion-14.png" id="16_aj61x"]
+[ext_resource type="Texture2D" uid="uid://wsv1n5eintrj" path="res://racecar/assets/pngs/explosion/funny_explosion-15.png" id="17_cqkmp"]
+[ext_resource type="Texture2D" uid="uid://y65gx2x400bm" path="res://racecar/assets/pngs/explosion/funny_explosion-16.png" id="18_0w0np"]
+[ext_resource type="Texture2D" uid="uid://dh1cqu38vx8tf" path="res://racecar/assets/pngs/explosion/funny_explosion-17.png" id="19_8nr2e"]
+[ext_resource type="Texture2D" uid="uid://ckbij7ugt1ahy" path="res://racecar/assets/pngs/explosion/funny_explosion-02.png" id="20_bffap"]
+[ext_resource type="Texture2D" uid="uid://o0tj3b1fwmof" path="res://racecar/assets/pngs/explosion/funny_explosion-03.png" id="21_f5m8c"]
+[ext_resource type="Texture2D" uid="uid://nimugoqynuow" path="res://racecar/assets/pngs/explosion/funny_explosion-04.png" id="22_0u610"]
+[ext_resource type="Texture2D" uid="uid://18b8u3qqo6xl" path="res://racecar/assets/pngs/explosion/funny_explosion-05.png" id="23_qvn1l"]
+[ext_resource type="Texture2D" uid="uid://1ouyrphirxwb" path="res://racecar/assets/pngs/explosion/funny_explosion-06.png" id="24_tyred"]
+[ext_resource type="Texture2D" uid="uid://btl14jog5t47l" path="res://racecar/assets/pngs/explosion/funny_explosion-07.png" id="25_e1q7q"]
+[ext_resource type="Texture2D" uid="uid://cvwomrra8c0ay" path="res://racecar/assets/pngs/explosion/funny_explosion-08.png" id="26_8ru24"]
+[ext_resource type="Texture2D" uid="uid://cbi53h4r3b82m" path="res://racecar/assets/pngs/innocent_tree.png" id="27_dvqol"]
+[ext_resource type="Script" uid="uid://c7lf17nkhtwrd" path="res://racecar/levels/fail_path_handler.gd" id="28_hl1yu"]
+[ext_resource type="Texture2D" uid="uid://h8sv7afpf4op" path="res://racecar/assets/pngs/the_flag.png" id="29_b4072"]
+[ext_resource type="PackedScene" uid="uid://m8mif51xpyfj" path="res://racecar/qte.tscn" id="30_0yyy4"]
+
+[sub_resource type="Curve2D" id="Curve2D_g44wj"]
+bake_interval = 1.5
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 194, 460, 0, 0, 0, 0, 191, 337, 0, 0, 0, 0, 213, 193, 0, 0, 0, 0, 296, 142, 0, 0, 0, 0, 379, 153, 0, 0, 0, 0, 453, 226, 0, 0, 0, 0, 476, 324, 0, 0, 0, 0, 534, 403, 0, 0, 0, 0, 656, 377, 0, 0, 0, 0, 708, 240, 0, 0, 0, 0, 772, 145, 0, 0, 0, 0, 865, 138, 0, 0, 0, 0, 945, 234, 0, 0, 0, 0, 947, 428, 0, 0, 0, 0, 884, 566, 0, 0, 0, 0, 723, 588, 0, 0, 0, 0, 599, 592, 0, 0, 0, 0, 428, 587, 0, 0, 0, 0, 274, 571, 0, 0, 0, 0, 223, 533, 0, 0, 0, 0, 194, 460)
+}
+point_count = 21
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k038"]
+atlas = ExtResource("27_dvqol")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myrju"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_tqmhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wvhk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1uclj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6eu3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d2y2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_aj61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cqkmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0w0np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8nr2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bffap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f5m8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0u610")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_qvn1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tyred")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_e1q7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8ru24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k038")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="RaceTrackLevel1" type="Node2D" unique_id=385830540]
+script = ExtResource("1_hben6")
+racetrack_stats = ExtResource("2_hben6")
+
+[node name="RaceTrack" type="Sprite2D" parent="." unique_id=1449761117]
+position = Vector2(670, 353)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_frvkm")
+
+[node name="CharacterHandler" type="Node2D" parent="." unique_id=184725384 node_paths=PackedStringArray("exclusion_shapes")]
+script = ExtResource("4_svdhh")
+character_pool = Array[ExtResource("5_agtuq")]([ExtResource("6_2rs7f"), ExtResource("7_t2qrm"), ExtResource("8_6blc1")])
+character_scene = ExtResource("9_y1dud")
+exclusion_shapes = [NodePath("../TrackArea/TrackShape")]
+
+[node name="TrackPath" type="Path2D" parent="." unique_id=434648878]
+curve = SubResource("Curve2D_g44wj")
+
+[node name="CarFollow" type="PathFollow2D" parent="TrackPath" unique_id=1650470666]
+position = Vector2(194, 460)
+rotation = -1.5951817
+
+[node name="Racecar" parent="TrackPath/CarFollow" unique_id=1221665385 instance=ExtResource("10_6mwew")]
+y_sort_enabled = true
+position = Vector2(-28.040462, 1.3166884)
+rotation = 1.5951817
+scale = Vector2(1.5, 1.5)
+
+[node name="Explosion" type="AnimatedSprite2D" parent="TrackPath/CarFollow" unique_id=757530992]
+unique_name_in_owner = true
+position = Vector2(-44.08622, -19.909916)
+rotation = -0.09495175
+sprite_frames = SubResource("SpriteFrames_myrju")
+
+[node name="FailPathHandler" type="Node2D" parent="." unique_id=1555592214]
+script = ExtResource("28_hl1yu")
+
+[node name="flag" type="Sprite2D" parent="." unique_id=1086204719]
+y_sort_enabled = true
+position = Vector2(322, 464)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("29_b4072")
+
+[node name="TrackArea" type="Area2D" parent="." unique_id=1779988998]
+
+[node name="TrackShape" type="CollisionPolygon2D" parent="TrackArea" unique_id=1822652685]
+visible = false
+polygon = PackedVector2Array(495, 649, 614, 649, 739, 649, 849, 595, 1041, 376, 1150, 236, 1164, 22, 867, 4, 573, 251, 493, 141, 364, 40, 181, 58, 30, 346, 9, 647)
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=820429789]
+
+[node name="QTE" parent="GameUI" unique_id=170823615 instance=ExtResource("30_0yyy4")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="CountdownLabel" type="Label" parent="GameUI" unique_id=1678129848]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -11.5
+offset_right = 66.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Countdown"
+
+[node name="GameOverPanel" type="Panel" parent="GameUI" unique_id=272340959]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/GameOverPanel" unique_id=1497832208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -46.5
+offset_right = 132.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="GameOverTitle" type="Label" parent="GameUI/GameOverPanel/VBoxContainer" unique_id=1285457330]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "SUCCESS!"
+horizontal_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="GameUI/GameOverPanel/VBoxContainer" unique_id=2026345393]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You are awesome!"
+horizontal_alignment = 1
+
+[node name="QteTimer" type="Timer" parent="." unique_id=189677425]
+one_shot = true

@@ -10,6 +10,7 @@ signal outro_finished
 var outro_queued : bool = false ## flag set to true when outro has started
 var outro_already_finished : bool = false ## flag set to true once outro has finished
 var hover_state : HoverState = HoverState.CANNOT_BE_HOVERED
+var glow_tween : Tween 
 
 @export var intro : ControlTween
 @export var outro : ControlTween
@@ -17,6 +18,8 @@ var hover_state : HoverState = HoverState.CANNOT_BE_HOVERED
 @export var end_hover_effect : ControlTween
 @export var press_effect : ControlTween
 @export var release_effect : ControlTween
+
+@onready var glow: TextureRect = get_node_or_null("ButtonGlow")
 
 
 func _ready() -> void:
@@ -32,6 +35,10 @@ func _ready() -> void:
 	
 	# set self up with pos ratio set all the way left
 	self.offset_transform_position_ratio = Vector2(-1, 0)
+	
+	if glow != null:
+		glow.modulate.a = 0.0		#start glow at 0 aphla value / clear
+		glow.scale = Vector2.ONE	#start at normal scale
 
 
 ## This func plays the outro of any button passed into it, with the exception of
@@ -67,6 +74,22 @@ static func intro_all_buttons(all_buttons : Array[MainMenuButton]) -> void:
 				process_always = false
 			await button.get_tree().create_timer(INTRO_SEQUENCE_COOLDOWN, process_always).timeout
 		button.play_intro()
+
+##helper function to animate glow TextureRect
+func animate_glow(alpha: float, scale_value: Vector2 = Vector2.ONE, duration: float = .15
+) -> void:
+	if glow == null:
+		return   #if button has no glow node do nothing
+	if glow_tween != null:
+		glow_tween.kill()  #if there is an old glow tween in system kill it
+		
+	glow_tween = create_tween() #make new glow tween
+	glow_tween.set_parallel(true) # fade and scale happen in parallel / at same time
+	
+	# fade glow's alpha twards a set value
+	glow_tween.tween_property(glow, "modulate:a", alpha, duration)
+	#scale glow at same time
+	glow_tween.tween_property(glow, "scale", scale_value, duration)
 
 
 ## Checks if all the export vars are set properly
@@ -119,6 +142,9 @@ func play_hover_tween(tween : ControlTween) -> void:
 func play_outro() -> void:
 	if outro_queued:
 		return
+		
+	animate_glow(0.0, Vector2.ONE, 0.1) # fade glow away
+	
 	hover_state = HoverState.CANNOT_BE_HOVERED
 	outro_queued = true
 	outro.do_tween()
@@ -133,12 +159,16 @@ func play_outro() -> void:
 func _on_hover_begin() -> void:
 	if hover_state == HoverState.CANNOT_BE_HOVERED || outro_queued:
 		return
+		
+	animate_glow(0.6, Vector2(1.03, 1.03), .12) #this is main opcacity of dots, currently set to slightly larger
 	play_hover_tween(start_hover_effect)
 
 
 func _on_hover_end() -> void:
 	if outro_queued:
 		return
+		
+	animate_glow(0.0, Vector2.ONE, .18) # return glow to invisible and normal size
 	play_hover_tween(end_hover_effect)
 
 
@@ -149,6 +179,11 @@ func _on_button_up() -> void:
 	if press_effect.tween != null: 
 		press_effect.tween.kill()
 	release_effect.do_tween()
+	
+	if is_hovered():
+		animate_glow(0.9, Vector2.ONE, 0.15) #release mouse click change opcacity from on_hover_begin
+	else:
+		animate_glow(0.0, Vector2.ONE, 0.15) #else fade out
 
 
 ## This purely handles playing the release_effect tween that plays on any kind of
@@ -160,6 +195,10 @@ func _on_button_down() -> void:
 	# kill release effect if one is playing
 	if release_effect.tween != null:
 		release_effect.tween.kill()
+	
+	#when button pressed make glow bigger and maximum brighness for .08 sec
+	animate_glow(1.0, Vector2(1.06,1.06), 0.08) 
+		
 	await press_effect.do_tween()
 
 

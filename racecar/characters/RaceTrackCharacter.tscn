@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bmmsn6uhteowi"]
+
+[ext_resource type="Texture2D" uid="uid://cbi53h4r3b82m" path="res://racecar/assets/pngs/innocent_tree.png" id="1_0jncm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i4ga"]
+atlas = ExtResource("1_0jncm")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f58m5"]
+atlas = ExtResource("1_0jncm")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b4rw"]
+atlas = ExtResource("1_0jncm")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikjkp"]
+atlas = ExtResource("1_0jncm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7qlb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i4ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f58m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b4rw")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikjkp")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RaceTrackCharacter" type="AnimatedSprite2D" unique_id=964158213]
+scale = Vector2(1.75, 1.75)
+sprite_frames = SubResource("SpriteFrames_a7qlb")

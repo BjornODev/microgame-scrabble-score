@@ -4,18 +4,23 @@
 [ext_resource type="FontFile" uid="uid://nbgv5d2s0ss2" path="res://Framework/Assets/dungeon-mode.ttf" id="1_lqlyn"]
 [ext_resource type="Script" uid="uid://c0eq70gyg7rhf" path="res://Framework/Addons/TweenTool/Scripts/Components/control_tween.gd" id="2_lqlyn"]
 [ext_resource type="Script" uid="uid://cdere083tmmuo" path="res://Framework/Addons/TweenTool/Scripts/TweenResources/offset_transform_tween.gd" id="3_hiv1w"]
+[ext_resource type="Texture2D" uid="uid://c04n3r6ravu8" path="res://Framework/Assets/main_menu_assets/yellow-button.png" id="3_svjsi"]
+[ext_resource type="Texture2D" uid="uid://clb0r5wq3jb" path="res://Framework/Assets/main_menu_assets/y-button-dots.png" id="4_ty2l7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy41y"]
-bg_color = Color(0.6815335, 0.5002604, 0.8868362, 1)
+bg_color = Color(0.68235296, 0.5019608, 0.8862745, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bskqj"]
-bg_color = Color(0.4953212, 0.2836058, 0.7052324, 1)
+bg_color = Color(0.49411765, 0.28235295, 0.7058824, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqlyn"]
-bg_color = Color(0.5816094, 0.36494827, 0.8044111, 1)
+bg_color = Color(0.5803922, 0.3647059, 0.8039216, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiv1w"]
-bg_color = Color(0.69709533, 0.2568381, 0.35529917, 1)
+bg_color = Color(0.69803923, 0.25490198, 0.35686275, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_svjsi"]
+blend_mode = 1
 
 [sub_resource type="Resource" id="Resource_g4v7s"]
 script = ExtResource("3_hiv1w")
@@ -96,6 +101,37 @@ end_hover_effect = NodePath("EndHoverEffect")
 press_effect = NodePath("PressEffect")
 release_effect = NodePath("ReleaseEffect")
 metadata/_edit_use_anchors_ = true
+
+[node name="ButtonArt" type="TextureRect" parent="." unique_id=1181708690]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.92700005
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -2.0
+offset_right = 48.68799
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_svjsi")
+
+[node name="ButtonGlow" type="TextureRect" parent="." unique_id=1906685171]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_svjsi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -3.5
+offset_right = 64.0
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ty2l7")
 
 [node name="Intro" type="Node" parent="." unique_id=732214244 node_paths=PackedStringArray("affected_node")]
 script = ExtResource("2_lqlyn")

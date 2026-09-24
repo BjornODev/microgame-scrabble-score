@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="RaceTrackCharacterStats" format=3 uid="uid://bf0e2e4wxw4ga"]
+
+[ext_resource type="Script" uid="uid://bbwtag0a7oe6y" path="res://racecar/resources/characters/racetrack_character.gd" id="1_6wyh3"]
+[ext_resource type="Texture2D" uid="uid://761l2is181y7" path="res://racecar/assets/pngs/melonsplosion.png" id="1_r83li"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd6rm"]
+atlas = ExtResource("1_r83li")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2ibe"]
+atlas = ExtResource("1_r83li")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0lim"]
+atlas = ExtResource("1_r83li")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfsp3"]
+atlas = ExtResource("1_r83li")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17pqy"]
+atlas = ExtResource("1_r83li")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xypg0"]
+atlas = ExtResource("1_r83li")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4qsx"]
+atlas = ExtResource("1_r83li")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdl7v"]
+atlas = ExtResource("1_r83li")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r83li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd6rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2ibe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0lim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfsp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17pqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xypg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4qsx")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdl7v")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_6wyh3")
+character_sprite_frames = SubResource("SpriteFrames_r83li")
+metadata/_custom_type_script = "uid://bbwtag0a7oe6y"

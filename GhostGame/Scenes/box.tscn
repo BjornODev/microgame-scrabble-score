@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0smtutt2b6cn"]
+
+[ext_resource type="Texture2D" uid="uid://dabjut1ma1g44" path="res://GhostGame/Assets/box.png" id="2_dfso1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uk8b3"]
+light_mode = 2
+
+[node name="Box" type="Node2D" unique_id=233560082]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=726846764]
+material = SubResource("CanvasItemMaterial_uk8b3")
+scale = Vector2(0.48852265, 0.5198241)
+texture = ExtResource("2_dfso1")

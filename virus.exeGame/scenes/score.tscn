@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rw1yhhdbcfrd"]
+
+[ext_resource type="Script" uid="uid://dma73kyyiibli" path="res://virus.exeGame/scripts/score.gd" id="1_elex4"]
+
+[node name="score" type="Node2D" unique_id=1962141384]
+script = ExtResource("1_elex4")

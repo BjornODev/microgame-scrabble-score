@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ctnwl6o5v62gs"]
+
+[ext_resource type="Texture2D" uid="uid://bdn1sunruslqh" path="res://GhostGame/Assets/White light no background.png" id="1_ddyn2"]
+[ext_resource type="Script" uid="uid://c3mjcep68k4xp" path="res://GhostGame/Scripts/point_light_2d.gd" id="1_nk6ki"]
+
+[node name="Flashlight" type="Node2D" unique_id=2066271764]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1139758681]
+scale = Vector2(1.5578811, 1.5747939)
+blend_mode = 2
+texture = ExtResource("1_ddyn2")
+texture_scale = 0.3
+script = ExtResource("1_nk6ki")

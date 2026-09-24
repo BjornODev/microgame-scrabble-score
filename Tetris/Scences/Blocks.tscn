@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bdjgu1vihrou0"]
+
+[ext_resource type="Script" uid="uid://bqgahf2f7t3j3" path="res://Tetris/Scripts/Blcok.gd" id="1_fgn3l"]
+[ext_resource type="Texture2D" uid="uid://klc76s7h0lg6" path="res://Tetris/Assets/Tetris Blocks Test/Sprite-0004.png" id="2_bsrei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8s8"]
+atlas = ExtResource("2_bsrei")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28o6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8s8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0ju"]
+size = Vector2(26, 18)
+
+[node name="Area2D" type="Area2D" unique_id=983311959]
+script = ExtResource("1_fgn3l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=413555161]
+position = Vector2(16, -16)
+sprite_frames = SubResource("SpriteFrames_28o6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2111916851]
+position = Vector2(16, -12)
+shape = SubResource("RectangleShape2D_pm0ju")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

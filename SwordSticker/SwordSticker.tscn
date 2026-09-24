@@ -1,0 +1,437 @@
+[gd_scene format=3 uid="uid://cb4ahbwg54vny"]
+
+[ext_resource type="Script" uid="uid://ct3vkf1otwvy4" path="res://SwordSticker/sword_sticker.gd" id="1_qq8mt"]
+[ext_resource type="AudioStream" uid="uid://duxfxmjoborxk" path="res://SwordSticker/SFX/sfx_sword_slam.mp3" id="2_bng4l"]
+[ext_resource type="Texture2D" uid="uid://xrfv5w7hvs6v" path="res://SwordSticker/game-sprites/assets/world/world-ground.png" id="2_wkdf7"]
+[ext_resource type="Script" uid="uid://cgfei0atdjbok" path="res://SwordSticker/center.gd" id="3_3qb1l"]
+[ext_resource type="Texture2D" uid="uid://b8gcscydxkwt2" path="res://SwordSticker/game-sprites/assets/world/world-background.png" id="3_bng4l"]
+[ext_resource type="AudioStream" uid="uid://co21hptjm1p5k" path="res://SwordSticker/SFX/sfx_villager_dies.mp3" id="6_aaxtg"]
+[ext_resource type="AudioStream" uid="uid://ct0qneai3dgn2" path="res://SwordSticker/SFX/sfx_ogre_dies.mp3" id="7_1wblj"]
+[ext_resource type="Script" uid="uid://c01nfx1cssdof" path="res://SwordSticker/extra_time_label.gd" id="8_brnn4"]
+[ext_resource type="AudioStream" uid="uid://bx2jhmoaolckn" path="res://SwordSticker/SFX/sfx_ticking.mp3" id="8_repsb"]
+[ext_resource type="Texture2D" uid="uid://cngcwsrpbx4w1" path="res://SwordSticker/game-sprites/assets/enemy/enemy-sprite.png" id="8_wigjw"]
+[ext_resource type="Texture2D" uid="uid://b1q3rp5dxlu2m" path="res://SwordSticker/game-sprites/assets/friend/friend-sprite.png" id="9_6ydmv"]
+[ext_resource type="Texture2D" uid="uid://bkfuywptcyms8" path="res://SwordSticker/game-sprites/assets/world/sword-sprite.png" id="10_brnn4"]
+[ext_resource type="Texture2D" uid="uid://n4fkheskgu6w" path="res://SwordSticker/game-sprites/assets/enemy/enemy-arm-other-sprite.png" id="13_col8r"]
+[ext_resource type="Texture2D" uid="uid://c77kedf7kl67c" path="res://SwordSticker/game-sprites/assets/enemy/enemy-arm-weapon-sprite.png" id="14_vcqfb"]
+[ext_resource type="Texture2D" uid="uid://dnlea2aw442ud" path="res://SwordSticker/game-sprites/assets/friend/friend-arm-weapon.png" id="15_gtbgu"]
+[ext_resource type="Texture2D" uid="uid://c5wa48pgxdyuc" path="res://SwordSticker/game-sprites/assets/friend/friend-arm-other.png" id="16_43eka"]
+
+[sub_resource type="Animation" id="Animation_brnn4"]
+resource_name = "CounterScale"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(0.75, 0.75), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8n6wb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_col8r"]
+_data = {
+&"CounterScale": SubResource("Animation_brnn4"),
+&"RESET": SubResource("Animation_8n6wb")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gtbgu"]
+load_path = "res://.godot/imported/enemy-sprite.png-e85615e1155ef48660df79ea67ec1b47.ctex"
+
+[sub_resource type="Animation" id="Animation_43eka"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-2.2351742e-08, 0.16666666, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.2617993877991494, 0.0, 1.7627825445142729]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/RightArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-2.2351742e-08, 0.06666666, 0.13333333, 0.19999996, 0.26666665, 0.3333333, 0.39999995, 0.4666667, 0.5333333, 0.6, 0.6666666, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.7055225e-08, 0.06666672, 0.13333344, 0.20000005, 0.26666677, 0.33333337, 0.39999998, 0.46666682, 0.5333334, 0.6, 0.6666666, 0.73333347),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.53333336, 0.7, 0.8666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hfrwd"]
+resource_name = "SwordStab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.2617993877991494, 0.0, 1.7627825445142729]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/RightArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666668, 0.13333336, 0.19999999, 0.26666668, 0.33333334, 0.39999998, 0.4666667, 0.5333333, 0.6, 0.6666666, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8.940697e-08, 0.06666675, 0.13333347, 0.20000008, 0.2666668, 0.3333334, 0.4, 0.46666685, 0.5333334, 0.6, 0.6666666, 0.73333347),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295, -0.05235987755982989, 0.0, 0.17453292519943295]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.53333336, 0.7, 0.8666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rjjsl"]
+_data = {
+&"RESET": SubResource("Animation_43eka"),
+&"SwordStab": SubResource("Animation_hfrwd")
+}
+
+[node name="SwordSticker" type="Node2D" unique_id=221769728]
+script = ExtResource("1_qq8mt")
+
+[node name="SfxSwordSlam" type="AudioStreamPlayer" parent="." unique_id=1609084578]
+stream = ExtResource("2_bng4l")
+
+[node name="SpinWorld" type="Sprite2D" parent="." unique_id=1989300692]
+position = Vector2(550, 78)
+texture = ExtResource("2_wkdf7")
+
+[node name="Background" type="Sprite2D" parent="SpinWorld" unique_id=1503610159]
+z_index = -1
+texture = ExtResource("3_bng4l")
+metadata/_edit_lock_ = true
+
+[node name="StickPoint" type="Node2D" parent="." unique_id=1513382769]
+position = Vector2(550, 415)
+
+[node name="ProjPoint" type="Node2D" parent="." unique_id=485029104]
+position = Vector2(545, 591)
+
+[node name="Center" type="Node2D" parent="." unique_id=1045379017]
+visible = false
+position = Vector2(552, 72)
+script = ExtResource("3_3qb1l")
+
+[node name="SfxVillagerDies" type="AudioStreamPlayer" parent="Center" unique_id=191953653]
+stream = ExtResource("6_aaxtg")
+
+[node name="SfxOgreDies" type="AudioStreamPlayer" parent="Center" unique_id=1078820586]
+stream = ExtResource("7_1wblj")
+
+[node name="LoseTimer" type="Timer" parent="." unique_id=2022348710]
+
+[node name="CounterLabel" type="Label" parent="LoseTimer" unique_id=612676377]
+offset_left = 904.0
+offset_top = 384.0
+offset_right = 1104.0
+offset_bottom = 624.0
+pivot_offset = Vector2(153, 158)
+theme_override_font_sizes/font_size = 175
+text = "10"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoseTimer/CounterLabel" unique_id=488232315]
+libraries/ = SubResource("AnimationLibrary_col8r")
+
+[node name="ExtraTimeLabel" type="Label" parent="LoseTimer" unique_id=541196145]
+offset_left = 69.0
+offset_top = 367.0
+offset_right = 589.0
+offset_bottom = 655.0
+theme_override_font_sizes/font_size = 50
+script = ExtResource("8_brnn4")
+
+[node name="InstructionMenu" type="Control" parent="." unique_id=1734799265]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 160.0
+offset_top = -55.0
+offset_right = 971.0
+offset_bottom = 485.0
+
+[node name="Label" type="Label" parent="InstructionMenu" unique_id=1192397409]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 191.0
+offset_right = 713.0
+offset_bottom = 297.0
+text = "KILL ALL THE OGRES"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="InstructionMenu/Label" unique_id=1543592491]
+position = Vector2(126, -31)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_wigjw")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 218.37549)
+
+[node name="Label2" type="Label" parent="InstructionMenu" unique_id=1599607936]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 192.0
+offset_right = 417.0
+offset_bottom = 298.0
+text = "AVOID KILLING VILLAGERS"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="InstructionMenu/Label2" unique_id=1015664158]
+position = Vector2(121, -37)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_6ydmv")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 242.4198)
+
+[node name="Label3" type="Label" parent="InstructionMenu" unique_id=174853533]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 395.0
+offset_right = 534.0
+offset_bottom = 501.0
+text = "PRESS \"SPACE\" TO SHOOT"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="InstructionMenu/Label3" unique_id=1517638939]
+position = Vector2(132, -73)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_brnn4")
+
+[node name="StartTimer" type="Timer" parent="InstructionMenu" unique_id=784252823]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="SfxTicking" type="AudioStreamPlayer" parent="." unique_id=918751412]
+stream = ExtResource("8_repsb")
+pitch_scale = 0.2
+
+[node name="Winscreen" type="Control" parent="." unique_id=1050078775]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 157.0
+offset_top = 7.0
+offset_right = 980.0
+offset_bottom = 506.0
+
+[node name="Label" type="Label" parent="Winscreen" unique_id=188872488]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 219.0
+offset_top = 44.0
+offset_right = 623.0
+offset_bottom = 284.0
+pivot_offset = Vector2(194, 169)
+theme_override_font_sizes/font_size = 175
+text = "WIN!"
+
+[node name="Body" type="Sprite2D" parent="Winscreen" unique_id=1845908958]
+position = Vector2(484, 433)
+rotation = 0.79761547
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_gtbgu")
+
+[node name="RightArm" type="Sprite2D" parent="Winscreen/Body" unique_id=1738432923]
+position = Vector2(128.05652, -85.78253)
+rotation = -0.05235986
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_vcqfb")
+offset = Vector2(134.49854, -71.58618)
+
+[node name="LeftArm" type="Sprite2D" parent="Winscreen/Body" unique_id=159600888]
+position = Vector2(-139.5658, -59.915527)
+rotation = -0.05235993
+texture = ExtResource("13_col8r")
+offset = Vector2(-116.38501, 179.0169)
+
+[node name="Sword" type="Sprite2D" parent="Winscreen" unique_id=891449373]
+z_index = 1
+position = Vector2(146.2839, 453.43365)
+rotation = 0.26179937
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("10_brnn4")
+offset = Vector2(-345.9322, -551.744)
+
+[node name="WinPlayer" type="AnimationPlayer" parent="Winscreen" unique_id=102648468]
+libraries/ = SubResource("AnimationLibrary_rjjsl")
+
+[node name="Losescreen" type="Control" parent="." unique_id=1026811816]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 157.0
+offset_top = 7.0
+offset_right = 980.0
+offset_bottom = 506.0
+
+[node name="Label" type="Label" parent="Losescreen" unique_id=273319597]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 116.0
+offset_top = 51.0
+offset_right = 703.0
+offset_bottom = 291.0
+pivot_offset = Vector2(288, 183)
+theme_override_font_sizes/font_size = 175
+text = "LOSER!"
+
+[node name="Body" type="Sprite2D" parent="Losescreen" unique_id=1185049795]
+position = Vector2(484, 433)
+rotation = 0.79761547
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6ydmv")
+
+[node name="RightArm" type="Sprite2D" parent="Losescreen/Body" unique_id=442617832]
+position = Vector2(140.09825, -93.16689)
+rotation = -0.05235986
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("15_gtbgu")
+offset = Vector2(116.88428, 55.032593)
+
+[node name="LeftArm" type="Sprite2D" parent="Losescreen/Body" unique_id=1429184250]
+position = Vector2(-145.13745, -71.77128)
+rotation = -0.05235993
+texture = ExtResource("16_43eka")
+offset = Vector2(-116.38501, 179.0169)
+
+[node name="Sword" type="Sprite2D" parent="Losescreen" unique_id=1718126152]
+z_index = 1
+position = Vector2(146.2839, 453.43365)
+rotation = 0.26179937
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("10_brnn4")
+offset = Vector2(-345.9322, -551.744)
+
+[node name="LosePlayer" type="AnimationPlayer" parent="Losescreen" unique_id=471981566]
+libraries/ = SubResource("AnimationLibrary_rjjsl")
+
+[connection signal="timeout" from="LoseTimer" to="." method="_on_lose_timer_timeout"]
+[connection signal="timeout" from="LoseTimer" to="LoseTimer/ExtraTimeLabel" method="_on_lose_timer_timeout"]
+[connection signal="timeout" from="InstructionMenu/StartTimer" to="." method="_on_start_timer_timeout"]

@@ -1,0 +1,586 @@
+[gd_scene format=3 uid="uid://c2ebufb8dtcs8"]
+
+[ext_resource type="Script" uid="uid://418naggbbqx0" path="res://RookieShapeshifter/main.gd" id="1_wrmiv"]
+[ext_resource type="Texture2D" uid="uid://bvk1qhy7i56gc" path="res://RookieShapeshifter/sprites/frank.png" id="2_5xte2"]
+[ext_resource type="Texture2D" uid="uid://cb8vicgfm221v" path="res://RookieShapeshifter/sprites/franked.png" id="3_dq7fs"]
+[ext_resource type="Texture2D" uid="uid://cj1irsm6a57wp" path="res://RookieShapeshifter/sprites/brown_belt.png" id="4_h4yrq"]
+[ext_resource type="Texture2D" uid="uid://cmgmg3464d7a4" path="res://RookieShapeshifter/sprites/redlineslol.png" id="4_jo76a"]
+[ext_resource type="Texture2D" uid="uid://dt8obe3f50eor" path="res://RookieShapeshifter/sprites/gunleft.png" id="5_7ix0a"]
+[ext_resource type="Texture2D" uid="uid://bwjtpj0bs0h5e" path="res://RookieShapeshifter/sprites/gunfront.png" id="5_40ntd"]
+[ext_resource type="Texture2D" uid="uid://6bee3kd4b1ld" path="res://RookieShapeshifter/sprites/brown_fbelt.png" id="5_phpx3"]
+[ext_resource type="Texture2D" uid="uid://bts41lrltvn7y" path="res://RookieShapeshifter/sprites/black_belt.png" id="5_t8uc6"]
+[ext_resource type="Texture2D" uid="uid://c1dy6qvjob6c8" path="res://RookieShapeshifter/sprites/frankedflipped.png" id="5_uy8xe"]
+[ext_resource type="Texture2D" uid="uid://bcfydpxyigyw" path="res://RookieShapeshifter/sprites/gray_hair.png" id="6_j26bw"]
+[ext_resource type="Texture2D" uid="uid://dlmq3t8movnos" path="res://RookieShapeshifter/sprites/black_fbelt.png" id="6_pbk72"]
+[ext_resource type="Texture2D" uid="uid://d0ryj1j03akvi" path="res://RookieShapeshifter/sprites/gunright.png" id="6_tyu22"]
+[ext_resource type="Texture2D" uid="uid://be5p32d7ev3c1" path="res://RookieShapeshifter/sprites/brown_feyes.png" id="7_rxu2p"]
+[ext_resource type="Texture2D" uid="uid://cseyc8b1j8hwb" path="res://RookieShapeshifter/sprites/green_fhatband.png" id="7_ug0iw"]
+[ext_resource type="Texture2D" uid="uid://dweut3kn7qyrk" path="res://RookieShapeshifter/sprites/brown_eye.png" id="8_jbsum"]
+[ext_resource type="Texture2D" uid="uid://lwc7nflemo64" path="res://RookieShapeshifter/sprites/blue_feyes.png" id="8_w8dcc"]
+[ext_resource type="Texture2D" uid="uid://dlg5vh7mxfp2e" path="res://RookieShapeshifter/sprites/red_ftie.png" id="8_x2jdw"]
+[ext_resource type="Texture2D" uid="uid://clwl3ajrdrxte" path="res://RookieShapeshifter/sprites/blue_eye.png" id="9_ih0de"]
+[ext_resource type="Texture2D" uid="uid://13uy8a3e8rl1" path="res://RookieShapeshifter/sprites/green_feyes.png" id="9_yity6"]
+[ext_resource type="Texture2D" uid="uid://bvqvjwx66ndc0" path="res://RookieShapeshifter/sprites/hazel_feyes.png" id="10_4pisq"]
+[ext_resource type="Texture2D" uid="uid://bqglqc4jdhmp7" path="res://RookieShapeshifter/sprites/green_eye.png" id="10_ilrro"]
+[ext_resource type="Texture2D" uid="uid://bvoebgb51st30" path="res://RookieShapeshifter/sprites/brown_fhair.png" id="11_ax5pe"]
+[ext_resource type="Texture2D" uid="uid://cdtvbirxkagng" path="res://RookieShapeshifter/sprites/hazel_eye.png" id="11_cwn4e"]
+[ext_resource type="Texture2D" uid="uid://82bsp38uqq22" path="res://RookieShapeshifter/sprites/black_fhair.png" id="12_afdfk"]
+[ext_resource type="Texture2D" uid="uid://d3wiudxyrpxtl" path="res://RookieShapeshifter/sprites/brown_hair.png" id="12_uy8xe"]
+[ext_resource type="Texture2D" uid="uid://c46ea773f3wde" path="res://RookieShapeshifter/sprites/gray_fhair.png" id="13_nagsl"]
+[ext_resource type="Texture2D" uid="uid://bj1vbbciwqag3" path="res://RookieShapeshifter/sprites/black_hair.png" id="13_wgm5x"]
+[ext_resource type="Texture2D" uid="uid://fy8s1jrkxtep" path="res://RookieShapeshifter/sprites/blonde_hair.png" id="14_k2i0a"]
+[ext_resource type="Texture2D" uid="uid://du6or3v3nserl" path="res://RookieShapeshifter/sprites/blonde_fhair.png" id="14_ldtle"]
+[ext_resource type="Texture2D" uid="uid://ceth18glv57wd" path="res://RookieShapeshifter/sprites/blue_fhatband.png" id="15_rmj85"]
+[ext_resource type="Texture2D" uid="uid://da2i6oqyjq74i" path="res://RookieShapeshifter/sprites/blue_hatband.png" id="16_h88kp"]
+[ext_resource type="Texture2D" uid="uid://t410yy2y30ld" path="res://RookieShapeshifter/sprites/green_hatband.png" id="17_5ksh0"]
+[ext_resource type="Texture2D" uid="uid://26eovar7rtnm" path="res://RookieShapeshifter/sprites/red_fhatband.png" id="17_ew5wc"]
+[ext_resource type="Texture2D" uid="uid://5kg5rnrrf5a2" path="res://RookieShapeshifter/sprites/yellow_fhatband.png" id="18_40xvy"]
+[ext_resource type="Texture2D" uid="uid://ba6gbkcufywfc" path="res://RookieShapeshifter/sprites/red_hatband.png" id="18_mmkix"]
+[ext_resource type="Texture2D" uid="uid://c38fityr4w87o" path="res://RookieShapeshifter/sprites/yellow_hatband.png" id="19_22spa"]
+[ext_resource type="Texture2D" uid="uid://bnrmvshrnbh0t" path="res://RookieShapeshifter/sprites/brown_fshoes.png" id="19_q8toq"]
+[ext_resource type="Texture2D" uid="uid://th3oan8tndfc" path="res://RookieShapeshifter/sprites/brown_shoe.png" id="20_ilrro"]
+[ext_resource type="Texture2D" uid="uid://cenlyij8y0b4l" path="res://RookieShapeshifter/sprites/black_fshoes.png" id="20_kkfj3"]
+[ext_resource type="Texture2D" uid="uid://c23oulgimtq33" path="res://RookieShapeshifter/sprites/black_shoe.png" id="21_cwn4e"]
+[ext_resource type="Texture2D" uid="uid://cllvlp4ygpror" path="res://RookieShapeshifter/sprites/blue_ftie.png" id="21_rn4we"]
+[ext_resource type="Texture2D" uid="uid://bl6u0egns3008" path="res://RookieShapeshifter/sprites/green_ftie.png" id="22_s4gyl"]
+[ext_resource type="Texture2D" uid="uid://cv3l5umg11tmb" path="res://RookieShapeshifter/sprites/blue_tie.png" id="22_uy8xe"]
+[ext_resource type="Texture2D" uid="uid://uk86a1ch11kl" path="res://RookieShapeshifter/sprites/green_tie.png" id="23_wgm5x"]
+[ext_resource type="Texture2D" uid="uid://bi2wcis1jn241" path="res://RookieShapeshifter/sprites/yellow_ftie.png" id="24_3u8g4"]
+[ext_resource type="Texture2D" uid="uid://d4iocah33royv" path="res://RookieShapeshifter/sprites/red_tie.png" id="24_k2i0a"]
+[ext_resource type="Texture2D" uid="uid://c1lavo8xorpc0" path="res://RookieShapeshifter/sprites/yellow_tie.png" id="25_h88kp"]
+[ext_resource type="Texture2D" uid="uid://cqwi72aqlskny" path="res://RookieShapeshifter/sprites/yoxuuxdiixxe.png" id="49_au8en"]
+[ext_resource type="AudioStream" uid="uid://qnykvb3pipfw" path="res://RookieShapeshifter/sprites/oliper18-scary-laugh.mp3" id="50_pbk72"]
+[ext_resource type="AudioStream" uid="uid://3tvah47txxtp" path="res://RookieShapeshifter/sprites/freesound_community-081175_heavy-weapon-002-85259.mp3" id="51_rxu2p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac7we"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xte2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dq7fs")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdibj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_phpx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pbk72")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ked1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rxu2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w8dcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yity6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4pisq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x51su"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ax5pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_afdfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nagsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ldtle")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0nyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_rmj85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ug0iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ew5wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_40xvy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7eel8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_q8toq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_kkfj3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s742j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_rn4we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_s4gyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x2jdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3u8g4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xahg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xte2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uy8xe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abbmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h4yrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t8uc6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_agg66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jbsum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ih0de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ilrro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cwn4e")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xk7gs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_uy8xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wgm5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j26bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k2i0a")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0lj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_h88kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5ksh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mmkix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_22spa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxoh4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ilrro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cwn4e")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4yrq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_uy8xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_wgm5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_k2i0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_h88kp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rif7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7ix0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tyu22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_40ntd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abbmg"]
+size = Vector2(526, 689)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rif7p"]
+size = Vector2(513, 692)
+
+[node name="Main" type="Node2D" unique_id=1742274950]
+script = ExtResource("1_wrmiv")
+
+[node name="GameBackground" type="Sprite2D" parent="." unique_id=1957482809]
+z_index = -1
+position = Vector2(576, 324)
+texture = ExtResource("4_jo76a")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1305044106]
+z_index = 5
+position = Vector2(576, 324)
+texture = ExtResource("4_jo76a")
+metadata/_edit_lock_ = true
+
+[node name="Yoxuuxdiixxe" type="Sprite2D" parent="." unique_id=239878134]
+visible = false
+z_index = 8
+position = Vector2(576, 324)
+texture = ExtResource("49_au8en")
+metadata/_edit_lock_ = true
+
+[node name="Instructions" type="Label" parent="." unique_id=1329298563]
+visible = false
+z_index = 7
+offset_left = 104.0
+offset_top = 120.0
+offset_right = 1052.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.22, 0.22, 0.22, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 100
+text = "Shoot The Imposter
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Instructions3" type="Label" parent="." unique_id=660371401]
+visible = false
+z_index = 7
+offset_left = 104.0
+offset_top = 114.0
+offset_right = 1052.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.22, 0.22, 0.22, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 140
+text = "Good Job!!!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instructions2" type="Label" parent="." unique_id=1454293153]
+visible = false
+z_index = 7
+offset_left = 104.0
+offset_top = 250.0
+offset_right = 1052.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 45
+text = "The Monster Made ONE Mistake
+
+
+Press [LEFT CLICK] to Start"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Countdown" type="Label" parent="." unique_id=915532883]
+visible = false
+z_index = 7
+offset_left = 376.0
+offset_top = 310.0
+offset_right = 776.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 100
+text = "3:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FrankLeft" type="Node2D" parent="." unique_id=1935717075]
+
+[node name="Frank" type="AnimatedSprite2D" parent="FrankLeft" unique_id=1409155188]
+z_index = 2
+position = Vector2(310, 340)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ac7we")
+metadata/_edit_lock_ = true
+
+[node name="Belt" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=1946345534]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_hdibj")
+metadata/_edit_lock_ = true
+
+[node name="Eyes" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=1596386979]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_4ked1")
+metadata/_edit_lock_ = true
+
+[node name="Hair" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=18103669]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_x51su")
+metadata/_edit_lock_ = true
+
+[node name="Hatband" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=242759484]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_h0nyq")
+metadata/_edit_lock_ = true
+
+[node name="Shoes" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=72894928]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_7eel8")
+metadata/_edit_lock_ = true
+
+[node name="Tie" type="AnimatedSprite2D" parent="FrankLeft/Frank" unique_id=347832259]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_s742j")
+metadata/_edit_lock_ = true
+
+[node name="FrankRight" type="Node2D" parent="." unique_id=2129735970]
+
+[node name="Frank2" type="AnimatedSprite2D" parent="FrankRight" unique_id=1715200524]
+z_index = 2
+position = Vector2(842, 340)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_7xahg")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Belt" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=1836758744]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_hdibj")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Eyes" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=90119397]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_4ked1")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Hair" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=2130264362]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_x51su")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Hatband" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=623630833]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_h0nyq")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Shoes" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=725325199]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_7eel8")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Tie" type="AnimatedSprite2D" parent="FrankRight/Frank2" unique_id=1185296724]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_s742j")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Hints" type="Node2D" parent="." unique_id=902762588]
+
+[node name="Belt" type="AnimatedSprite2D" parent="Hints" unique_id=1494687131]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_abbmg")
+metadata/_edit_lock_ = true
+
+[node name="Eyes" type="AnimatedSprite2D" parent="Hints" unique_id=1308336749]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_agg66")
+metadata/_edit_lock_ = true
+
+[node name="Hair" type="AnimatedSprite2D" parent="Hints" unique_id=641751999]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_xk7gs")
+metadata/_edit_lock_ = true
+
+[node name="Hatband" type="AnimatedSprite2D" parent="Hints" unique_id=1224908180]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_f0lj2")
+metadata/_edit_lock_ = true
+
+[node name="Shoes" type="AnimatedSprite2D" parent="Hints" unique_id=772134270]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_qxoh4")
+metadata/_edit_lock_ = true
+
+[node name="Tie" type="AnimatedSprite2D" parent="Hints" unique_id=967888852]
+visible = false
+z_index = 6
+position = Vector2(576, 230)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_h4yrq")
+metadata/_edit_lock_ = true
+
+[node name="Gun" type="AnimatedSprite2D" parent="." unique_id=1574703825]
+z_index = 4
+position = Vector2(575, 536.00006)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_rif7p")
+metadata/_edit_lock_ = true
+
+[node name="ChoiceAreaLeft" type="Area2D" parent="." unique_id=405008387]
+metadata/_edit_lock_ = true
+
+[node name="Left" type="CollisionShape2D" parent="ChoiceAreaLeft" unique_id=1200249477]
+position = Vector2(234, 326.5)
+shape = SubResource("RectangleShape2D_abbmg")
+metadata/_edit_lock_ = true
+
+[node name="ChoiceAreaRight" type="Area2D" parent="." unique_id=1746040335]
+metadata/_edit_lock_ = true
+
+[node name="Right" type="CollisionShape2D" parent="ChoiceAreaRight" unique_id=1828220819]
+position = Vector2(919.5, 327)
+shape = SubResource("RectangleShape2D_rif7p")
+metadata/_edit_lock_ = true
+
+[node name="Scarylose" type="AudioStreamPlayer" parent="." unique_id=2060527383]
+stream = ExtResource("50_pbk72")
+volume_db = -2.615
+pitch_scale = 0.63
+
+[node name="PewPew" type="AudioStreamPlayer" parent="." unique_id=346583936]
+stream = ExtResource("51_rxu2p")
+volume_db = -13.039
+pitch_scale = 0.73
+
+[connection signal="mouse_entered" from="ChoiceAreaLeft" to="." method="_on_choice_area_left_mouse_entered"]
+[connection signal="mouse_exited" from="ChoiceAreaLeft" to="." method="_on_choice_area_left_mouse_exited"]
+[connection signal="mouse_entered" from="ChoiceAreaRight" to="." method="_on_choice_area_right_mouse_entered"]
+[connection signal="mouse_exited" from="ChoiceAreaRight" to="." method="_on_choice_area_right_mouse_exited"]

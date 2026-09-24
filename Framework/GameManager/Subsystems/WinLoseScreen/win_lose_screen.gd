@@ -8,6 +8,9 @@ class_name WinLoseScreen extends Control
 @onready var wins_stat_display: FloatStatDisplay = %WinsStatDisplay
 @onready var difficulty_stat_display: FloatStatDisplay = %DifficultyStatDisplay
 
+@export var win_anims_pool : Array[PackedScene]
+@export var lose_anims_pool : Array[PackedScene]
+
 var old_save_data : SaveData = SaveData.new()
 var new_save_data : SaveData = SaveData.new()
 
@@ -27,7 +30,17 @@ func play_anim() -> void:
 	# do fade in
 	self.visible = true
 	
-	# do anims
+	# DO SILLY CUSTOM ART ANIMS:
+	# if player lost lives, they must've lost
+	#if new_save_data.lives < old_save_data.lives:
+		#lose_anims_pool.shuffle()
+		#await play_silly_anim(lose_anims_pool.get(0))
+	## if player didnt lose lives, they must've won!
+	#else:
+		#win_anims_pool.shuffle()
+		#await play_silly_anim(win_anims_pool.get(0))
+	
+	# do stat change anims
 	await lives_stat_display.do_anim(new_save_data.lives)
 	await wins_stat_display.do_anim(new_save_data.wins)
 	await difficulty_stat_display.do_anim(new_save_data.current_difficulty)
@@ -44,6 +57,17 @@ func play_anim() -> void:
 	old_save_data.lives = new_save_data.lives
 	old_save_data.wins = new_save_data.wins
 	old_save_data.current_difficulty = new_save_data.current_difficulty
+
+
+func play_silly_anim(packed_scene : PackedScene) -> void:
+	if packed_scene == null:
+		push_warning("%s: Could not play silly anim for a null anim! Check the win/lose anim pool" % self)
+		return
+	var instanced_scene = packed_scene.instantiate()
+	if instanced_scene is not WinLoseCustomAnimation:
+		return
+	self.add_child(instanced_scene)
+	await (instanced_scene as WinLoseCustomAnimation).anim_finished
 
 
 #region recording whether values have changed

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dqk4oxx1gw7o6"]
+
+[ext_resource type="Script" uid="uid://pdd4kyv4w831" path="res://racecar/qte_test.gd" id="1_gt82c"]
+
+[node name="QteTest" type="Control" unique_id=1019485661]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gt82c")
+
+[node name="Timer" type="Timer" parent="." unique_id=1778644957]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

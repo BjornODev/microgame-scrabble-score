@@ -17,5 +17,6 @@
 ## THE EXAMPLE MICROGAMES. WE WILL NOT ACCEPT MICROGAMES WHICH EDIT THIS CLASS
 @abstract class_name MicroGame extends Node
 
+
 ## This is the difficulty modififer for your game, it exists on a scale of 0.0 to 1.0
 var difficulty : float = 0.0

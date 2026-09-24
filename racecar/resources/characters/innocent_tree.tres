@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="RaceTrackCharacterStats" format=3 uid="uid://craqru1ocuij6"]
+
+[ext_resource type="Texture2D" uid="uid://cbi53h4r3b82m" path="res://racecar/assets/pngs/innocent_tree.png" id="1_pt1fr"]
+[ext_resource type="Script" uid="uid://bbwtag0a7oe6y" path="res://racecar/resources/characters/racetrack_character.gd" id="1_uexvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scn4i"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dcgr"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4lor"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3iut"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reios"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt6bf"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f56pd"]
+atlas = ExtResource("1_pt1fr")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pt1fr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scn4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dcgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4lor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3iut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reios")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt6bf")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f56pd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_uexvd")
+character_sprite_frames = SubResource("SpriteFrames_pt1fr")
+metadata/_custom_type_script = "uid://bbwtag0a7oe6y"

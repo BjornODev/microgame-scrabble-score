@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bvdwq5ci6stjg"]
+
+[ext_resource type="Script" uid="uid://sk7pemjfurqd" path="res://virus.exeGame/scripts/ms_dos_window.gd" id="1_4f8vg"]
+[ext_resource type="Texture2D" uid="uid://b2jmmcxq2kwqm" path="res://virus.exeGame/Assets/sprites/ms-dos-window.jpg" id="1_ryhjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqvtf"]
+size = Vector2(14, 13)
+
+[node name="ms-dos-window" type="Area2D" unique_id=1604882490]
+z_index = 1
+script = ExtResource("1_4f8vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=120428004]
+z_index = 4
+position = Vector2(245, 149)
+scale = Vector2(0.75, 0.694)
+texture = ExtResource("1_ryhjd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808494726]
+position = Vector2(479, 10)
+shape = SubResource("RectangleShape2D_qqvtf")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

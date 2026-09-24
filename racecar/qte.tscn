@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://m8mif51xpyfj"]
+
+[ext_resource type="Script" uid="uid://dgb3gvuc2uk32" path="res://racecar/qte.gd" id="1_jnbvj"]
+[ext_resource type="Shader" uid="uid://bnv0sstqygmnu" path="res://qte.gdshader" id="1_u0u4f"]
+[ext_resource type="Texture2D" uid="uid://bwyhqs0kwkeya" path="res://racecar/assets/placeholders/keyboard_space_outline.png" id="3_qeceo"]
+[ext_resource type="Texture2D" uid="uid://c2t3wjw4exqx5" path="res://racecar/assets/placeholders/keyboard_space.png" id="4_pbci4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7qlb"]
+resource_local_to_scene = true
+shader = ExtResource("1_u0u4f")
+shader_parameter/first_color = Color(0, 0.78431374, 0, 1)
+shader_parameter/second_color = Color(1, 1, 0, 1)
+shader_parameter/third_color = Color(0.78431374, 0, 0, 1)
+shader_parameter/primary_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/unfilled_color = Color(0.443, 0.443, 0.443, 1)
+shader_parameter/value = 1.0
+shader_parameter/smooth_ = 0.005
+shader_parameter/width_in = 0.78
+shader_parameter/width_out = 0.95
+shader_parameter/border_width = 0.03
+
+[sub_resource type="Animation" id="Animation_wskil"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpacebarTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_qeceo")]
+}
+
+[sub_resource type="Animation" id="Animation_pbci4"]
+resource_name = "spacebar_animation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpacebarTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_qeceo"), ExtResource("4_pbci4"), ExtResource("3_qeceo"), ExtResource("4_pbci4"), ExtResource("3_qeceo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wskil"]
+_data = {
+&"RESET": SubResource("Animation_wskil"),
+&"spacebar_animation": SubResource("Animation_pbci4")
+}
+
+[node name="Qte" type="Control" unique_id=170823615]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnbvj")
+
+[node name="Circle" type="ColorRect" parent="." unique_id=822664396]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_a7qlb")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpacebarTexture" type="TextureRect" parent="Circle" unique_id=1367896751]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -97.0
+offset_right = -32.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("3_qeceo")
+stretch_mode = 5
+
+[node name="KeyLabel" type="Label" parent="Circle" unique_id=1186958960]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -34.5
+offset_right = 111.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "Q"
+horizontal_alignment = 1
+
+[node name="SuccessLabel" type="Label" parent="Circle" unique_id=2079521938]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 6.0
+offset_right = 121.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.43633232
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "SUCCESS"
+
+[node name="FailLabel" type="Label" parent="Circle" unique_id=77525467]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -14.0
+offset_right = 145.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.43633232
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "FAIL!!!"
+
+[node name="EarlyLabel" type="Label" parent="Circle" unique_id=2140423882]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = 62.0
+offset_right = 237.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.43633232
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "TOO EARLY, BUDDY!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2128075327]
+root_node = NodePath("../Circle")
+libraries/ = SubResource("AnimationLibrary_wskil")
+autoplay = &"spacebar_animation"

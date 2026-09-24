@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://crr0vq3ihug1h"]
+
+[ext_resource type="Script" uid="uid://50y75ugrtt4k" path="res://SwordSticker/enemy.gd" id="1_pwysy"]
+[ext_resource type="Texture2D" uid="uid://cngcwsrpbx4w1" path="res://SwordSticker/game-sprites/assets/enemy/enemy-sprite.png" id="2_pwysy"]
+[ext_resource type="Texture2D" uid="uid://n4fkheskgu6w" path="res://SwordSticker/game-sprites/assets/enemy/enemy-arm-other-sprite.png" id="3_twnk5"]
+[ext_resource type="Texture2D" uid="uid://c77kedf7kl67c" path="res://SwordSticker/game-sprites/assets/enemy/enemy-arm-weapon-sprite.png" id="4_b7wuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s24i"]
+size = Vector2(73, 28)
+
+[node name="Enemy" type="Area2D" unique_id=562337990]
+script = ExtResource("1_pwysy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1237159297]
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_pwysy")
+
+[node name="LeftArm" type="Sprite2D" parent="Sprite2D" unique_id=1574005292]
+position = Vector2(-150.80786, -85.37579)
+texture = ExtResource("3_twnk5")
+offset = Vector2(-119.19214, 195.3758)
+
+[node name="RightArm" type="Sprite2D" parent="Sprite2D" unique_id=1741781309]
+position = Vector2(129.5872, -83.05849)
+texture = ExtResource("4_b7wuw")
+offset = Vector2(140.41277, -66.94151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1585132384]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6s24i")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

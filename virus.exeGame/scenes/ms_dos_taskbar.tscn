@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://r8p0buyappew"]
+
+[ext_resource type="Texture2D" uid="uid://byf0w7rofndkh" path="res://virus.exeGame/Assets/sprites/ms-dos-taskbar.png" id="1_eup5j"]
+
+[node name="ms-dos-taskbar" type="TextureRect" unique_id=412332502]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_eup5j")

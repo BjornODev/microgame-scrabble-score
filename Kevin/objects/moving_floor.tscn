@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://c7pw8pj4nomti"]
+
+[ext_resource type="PackedScene" uid="uid://lh51ybhq4tab" path="res://Kevin/assets/models/wall.glb" id="1_6o4q6"]
+[ext_resource type="PackedScene" uid="uid://c0w78qw2wo8rv" path="res://Kevin/assets/models/magma_emission_edition_2.tscn" id="2_vwtkv"]
+[ext_resource type="PackedScene" uid="uid://gjxn5jmwws0e" path="res://Kevin/objects/chest.tscn" id="3_pvbma"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bk7jt"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="Animation" id="Animation_vwtkv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(26, 0.0001001358, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4, 32, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pvbma"]
+resource_name = "start"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(26, 0.0001001358, 0), Vector3(34, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vgg6j"]
+resource_name = "win"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor Front:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(34, 0, 0), Vector3(26, 0.0001001358, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4, 32, 0), Vector3(-4, 32, 0), Vector3(-4, 32, 0), Vector3(-4, 11.4, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chest")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"land"
+}, {
+"args": [],
+"method": &"open_up"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1lwe"]
+_data = {
+&"RESET": SubResource("Animation_vwtkv"),
+&"start": SubResource("Animation_pvbma"),
+&"win": SubResource("Animation_vgg6j")
+}
+
+[node name="Moving Floor" type="Node3D" unique_id=1727737218]
+
+[node name="Floor Front" parent="." unique_id=1789983481 instance=ExtResource("1_6o4q6")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 26, 0.0001001358, 0)
+
+[node name="Floor Back" parent="." unique_id=1790857672 instance=ExtResource("1_6o4q6")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -42, 0, 0)
+
+[node name="magma2" parent="." unique_id=265970519 instance=ExtResource("2_vwtkv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 1, 0)
+
+[node name="Chest" parent="." unique_id=537522036 instance=ExtResource("3_pvbma")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 32, 0)
+
+[node name="Lava Hitbox" type="StaticBody3D" parent="." unique_id=725376363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lava Hitbox" unique_id=245012997]
+shape = SubResource("BoxShape3D_bk7jt")
+debug_color = Color(0.73333335, 0.22745098, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1267302573]
+libraries/ = SubResource("AnimationLibrary_k1lwe")

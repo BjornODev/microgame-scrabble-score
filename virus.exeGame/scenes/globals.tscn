@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://by5cofprr0ipt"]
+
+[ext_resource type="Script" uid="uid://b1fh53e03bqn4" path="res://virus.exeGame/scripts/globals.gd" id="1_vpere"]
+
+[node name="Globals" type="Node2D" unique_id=1285331439]
+script = ExtResource("1_vpere")

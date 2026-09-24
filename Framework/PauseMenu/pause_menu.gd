@@ -1,4 +1,4 @@
-class_name PauseMenu extends CanvasLayer
+class_name PauseMenu extends Node
 
 @onready var gradient: TextureRect = %Gradient
 @onready var resume: MainMenuButton = %Resume as MainMenuButton
@@ -24,12 +24,16 @@ func close_pause_menu(button_pressed : MainMenuButton = resume) -> void:
 	fade_out.do_tween()
 	await MainMenuButton.outro_all_buttons(button_pressed, buttons)
 	GameManager.unpause_game()
+	# Hide the mouse icon when closing the pause menu
+	GameManager.mouse_paw.make_invisible()
 	self.queue_free()
 
 
 func open_pause_menu() -> void:
 	GameManager.pause_game()
 	fade_in.do_tween()
+	# Show the mouse icon while in pause menu
+	GameManager.mouse_paw.make_visible()
 	# stagger buttons on begin
 	await MainMenuButton.intro_all_buttons(buttons)
 

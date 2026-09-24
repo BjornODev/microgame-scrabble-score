@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://l3elmlefqi7w"]
+
+[ext_resource type="Script" uid="uid://bxnhhrujhnmup" path="res://GhostGame/Scenes/ghost_spawn.gd" id="1_joipw"]
+[ext_resource type="Texture2D" uid="uid://bawrttkrixicp" path="res://GhostGame/Assets/ghost.png" id="2_hrn84"]
+[ext_resource type="Texture2D" uid="uid://byci1qp6x8i6x" path="res://GhostGame/Assets/stupid baby.png" id="3_gsi7o"]
+[ext_resource type="Script" uid="uid://ct184ykpug1q2" path="res://GhostGame/Scripts/area_2d_ghost.gd" id="4_qdpe7"]
+[ext_resource type="Script" uid="uid://duosu8q2uy7il" path="res://GhostGame/Scenes/flashlight_Area2d_position.gd" id="5_nm8s4"]
+[ext_resource type="AudioStream" uid="uid://q5ecxho5q010" path="res://GhostGame/Assets/Sounds/Correct.mp3" id="6_hrn84"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8h8ym"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ovbv5"]
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0siw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hrn84")
+}],
+"loop": 1,
+"name": &"Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gsi7o")
+}],
+"loop": 1,
+"name": &"Scream",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nm8s4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hrn84"]
+resource_name = "Shake"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666672, 0.13333344, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 1), Vector2(-4, 4), Vector2(5, -3), Vector2(3, 2), Vector2(-5, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsi7o"]
+_data = {
+&"RESET": SubResource("Animation_nm8s4"),
+&"Shake": SubResource("Animation_hrn84")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0siw"]
+radius = 38.118237
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nm8s4"]
+radius = 88.051125
+
+[node name="Ghost" type="Node2D" unique_id=1422598180]
+material = SubResource("CanvasItemMaterial_8h8ym")
+script = ExtResource("1_joipw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=903846183]
+self_modulate = Color(1, 1, 1, 0.49019608)
+material = SubResource("CanvasItemMaterial_ovbv5")
+position = Vector2(0, -5.000001)
+scale = Vector2(0.32838243, 0.3152533)
+sprite_frames = SubResource("SpriteFrames_d0siw")
+animation = &"Normal"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=962612762]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_gsi7o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=402897982]
+script = ExtResource("4_qdpe7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=562861611]
+shape = SubResource("CircleShape2D_d0siw")
+
+[node name="FlashlightArea2D" type="Area2D" parent="." unique_id=1782309455]
+script = ExtResource("5_nm8s4")
+
+[node name="FlashlightCollisionShape2D" type="CollisionShape2D" parent="FlashlightArea2D" unique_id=1008580880]
+scale = Vector2(1.3041883, 1.2764773)
+shape = SubResource("CircleShape2D_nm8s4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=278939547]
+stream = ExtResource("6_hrn84")

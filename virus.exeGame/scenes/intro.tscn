@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://1klln4iaap7o"]
+
+[ext_resource type="Script" uid="uid://bi6g5v3unt3f5" path="res://virus.exeGame/scripts/intro.gd" id="1_gv5ms"]
+[ext_resource type="VideoStream" uid="uid://i1djworekvv5" path="res://virus.exeGame/Assets/videos/virusGameIntro.ogv" id="2_gv5ms"]
+
+[node name="intro" type="Control" unique_id=1560784811]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gv5ms")
+
+[node name="intro" type="VideoStreamPlayer" parent="." unique_id=946698200]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("2_gv5ms")
+autoplay = true
+
+[connection signal="finished" from="intro" to="." method="_on_video_stream_player_finished"]

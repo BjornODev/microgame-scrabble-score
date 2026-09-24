@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bql81h0cdghwi"]
+
+[ext_resource type="Script" uid="uid://02lbrcilaovs" path="res://Tetris/Scripts/win_blocks.gd" id="1_ulvq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm0ju"]
+size = Vector2(26, 16)
+
+[node name="Area2D" type="Area2D" unique_id=983311959]
+script = ExtResource("1_ulvq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2111916851]
+visibility_layer = 2
+position = Vector2(16, -11)
+shape = SubResource("RectangleShape2D_pm0ju")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

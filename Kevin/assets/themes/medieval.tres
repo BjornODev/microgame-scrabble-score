@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://cb6b34wyrrvi8"]
+
+[ext_resource type="FontFile" uid="uid://dasd24mpggck5" path="res://Kevin/assets/fonts/Canterbury.ttf" id="1_c6lw1"]
+
+[resource]
+default_font = ExtResource("1_c6lw1")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.78431374)
+RichTextLabel/constants/shadow_offset_x = 4
+RichTextLabel/constants/shadow_offset_y = 4
+RichTextLabel/constants/shadow_outline_size = 8

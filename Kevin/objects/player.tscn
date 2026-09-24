@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://j7o1fwdabw8"]
+
+[ext_resource type="Script" uid="uid://dp38voijyfxs5" path="res://Kevin/objects/player.gd" id="1_gptsk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bk7jt"]
+radius = 0.05
+
+[sub_resource type="Animation" id="Animation_gptsk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ffe2x"]
+resource_name = "shake"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jnggl"]
+resource_name = "wall_shake"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.1, 0.0, 0.1, 0.0, 0.1, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qvk6s"]
+resource_name = "wall_shake_infinite"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot/Camera3D:v_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnggl"]
+_data = {
+&"RESET": SubResource("Animation_gptsk"),
+&"shake": SubResource("Animation_ffe2x"),
+&"wall_shake": SubResource("Animation_jnggl"),
+&"wall_shake_infinite": SubResource("Animation_qvk6s")
+}
+
+[node name="Player" type="Node3D" unique_id=492589649]
+script = ExtResource("1_gptsk")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1325894347]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=708135965]
+current = true
+
+[node name="CullingArea" type="Area3D" parent="." unique_id=1767324603]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CullingArea" unique_id=2116511882]
+shape = SubResource("SphereShape3D_bk7jt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1135396405]
+libraries/ = SubResource("AnimationLibrary_jnggl")
+
+[connection signal="body_exited" from="CullingArea" to="." method="_on_culling_area_body_exited"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://biykn6tf00jg8"]
+
+[ext_resource type="Script" uid="uid://cedikiplamq4j" path="res://virus.exeGame/VirusGameMain/virus_game.gd" id="1_yn0u1"]
+[ext_resource type="PackedScene" uid="uid://1klln4iaap7o" path="res://virus.exeGame/scenes/intro.tscn" id="2_3qfu0"]
+[ext_resource type="PackedScene" uid="uid://rpw68hnik200" path="res://virus.exeGame/scenes/background_empty.tscn" id="2_wwwno"]
+[ext_resource type="Script" uid="uid://btiqkrrvdyvx8" path="res://virus.exeGame/scripts/background_empty.gd" id="3_hqxh8"]
+[ext_resource type="PackedScene" uid="uid://0ae1018yuxov" path="res://virus.exeGame/scenes/spawn_terminal.tscn" id="3_u8rpl"]
+[ext_resource type="PackedScene" uid="uid://rw1yhhdbcfrd" path="res://virus.exeGame/scenes/score.tscn" id="4_wwwno"]
+[ext_resource type="AudioStream" uid="uid://b0vw5ivlx5jlq" path="res://virus.exeGame/Assets/sfx/tetris_sfx.mp3" id="5_u8rpl"]
+[ext_resource type="Script" uid="uid://dyiy0oce14uyb" path="res://virus.exeGame/scripts/audio_stream_player.gd" id="6_irx6m"]
+
+[node name="Virus_exeGame" type="Node2D" unique_id=141195700]
+script = ExtResource("1_yn0u1")
+
+[node name="Background_empty" parent="." unique_id=1162482812 instance=ExtResource("2_wwwno")]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+expand_mode = 1
+script = ExtResource("3_hqxh8")
+
+[node name="spawn_terminal" parent="." unique_id=1196065383 instance=ExtResource("3_u8rpl")]
+
+[node name="score" parent="." unique_id=1962141384 instance=ExtResource("4_wwwno")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1315884347]
+stream = ExtResource("5_u8rpl")
+volume_db = -20.0
+script = ExtResource("6_irx6m")
+
+[node name="intro" parent="." unique_id=1924559760 instance=ExtResource("2_3qfu0")]
+z_index = 3
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+
+[connection signal="game_over" from="score" to="." method="_on_score_game_over"]
+[connection signal="game_over" from="score" to="spawn_terminal" method="_on_score_game_over"]
+[connection signal="intro_finished" from="intro" to="Background_empty" method="_on_intro_intro_finished"]
+[connection signal="intro_finished" from="intro" to="spawn_terminal" method="_on_intro_intro_finished"]
+[connection signal="intro_finished" from="intro" to="AudioStreamPlayer" method="_on_intro_intro_finished"]

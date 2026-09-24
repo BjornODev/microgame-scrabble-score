@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0ae1018yuxov"]
+
+[ext_resource type="Script" uid="uid://cq7w364mh6g7b" path="res://virus.exeGame/scripts/spawn-terminal.gd" id="1_wpdp8"]
+[ext_resource type="PackedScene" uid="uid://bvdwq5ci6stjg" path="res://virus.exeGame/scenes/ms_dos_window.tscn" id="2_py21v"]
+[ext_resource type="AudioStream" uid="uid://4kcqqo4olw6c" path="res://virus.exeGame/Assets/sfx/terminal_open.mp3" id="3_e86f0"]
+
+[node name="spawn_terminal" type="Node2D" unique_id=1196065383 node_paths=PackedStringArray("ui_layer")]
+script = ExtResource("1_wpdp8")
+popup_scene = ExtResource("2_py21v")
+ui_layer = NodePath(".")
+
+[node name="Timer" type="Timer" parent="." unique_id=1743425802]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=714521827]
+stream = ExtResource("3_e86f0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

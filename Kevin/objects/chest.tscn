@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://gjxn5jmwws0e"]
+
+[ext_resource type="PackedScene" uid="uid://bglqfho7hwm8c" path="res://Kevin/assets/models/chest.glb" id="1_d533r"]
+[ext_resource type="Script" uid="uid://cbgpbrxl31wgo" path="res://Kevin/objects/chest.gd" id="1_q5wbq"]
+[ext_resource type="PackedScene" uid="uid://bwbvryev8oefc" path="res://Kevin/assets/models/chest_lid.glb" id="2_q5wbq"]
+
+[sub_resource type="Animation" id="Animation_d533r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q5wbq"]
+resource_name = "open"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.3561945, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 25.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qeo3m"]
+_data = {
+&"RESET": SubResource("Animation_d533r"),
+&"open": SubResource("Animation_q5wbq")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocnln"]
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bk7jt"]
+material = SubResource("StandardMaterial3D_ocnln")
+radius = 0.3
+height = 0.5
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id="Curve_d533r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.011235952), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Chest" type="Node3D" unique_id=537522036]
+script = ExtResource("1_q5wbq")
+
+[node name="chest" parent="." unique_id=331033444 instance=ExtResource("1_d533r")]
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1293823681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="chest_lid" parent="Pivot" unique_id=482592417 instance=ExtResource("2_q5wbq")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1446617804]
+libraries/ = SubResource("AnimationLibrary_qeo3m")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1857606271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7799636, 0)
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.0
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1110306222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6751388, 0)
+emitting = false
+amount = 16
+mesh = SubResource("SphereMesh_bk7jt")
+direction = Vector3(0, 1, 0)
+spread = 36.09
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_curve = SubResource("Curve_d533r")
